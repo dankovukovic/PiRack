@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "D:\\Github\\PiRack\\PiRackDashboard\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{854279E0-11C7-87C4-E0F2-BADFF0CDBC32}|PiRackDashboard.csproj|d:\\github\\pirack\\pirackdashboard\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{854279E0-11C7-87C4-E0F2-BADFF0CDBC32}|PiRackDashboard.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{854279E0-11C7-87C4-E0F2-BADFF0CDBC32}|PiRackDashboard.csproj|d:\\github\\pirack\\pirackdashboard\\wwwroot\\js\\dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{854279E0-11C7-87C4-E0F2-BADFF0CDBC32}|PiRackDashboard.csproj|solutionrelative:wwwroot\\js\\dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{854279E0-11C7-87C4-E0F2-BADFF0CDBC32}|PiRackDashboard.csproj|d:\\github\\pirack\\pirackdashboard\\services\\telemetryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{854279E0-11C7-87C4-E0F2-BADFF0CDBC32}|PiRackDashboard.csproj|solutionrelative:services\\telemetryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{854279E0-11C7-87C4-E0F2-BADFF0CDBC32}|PiRackDashboard.csproj|d:\\github\\pirack\\pirackdashboard\\models\\racktelemetry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{854279E0-11C7-87C4-E0F2-BADFF0CDBC32}|PiRackDashboard.csproj|solutionrelative:models\\racktelemetry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{854279E0-11C7-87C4-E0F2-BADFF0CDBC32}|PiRackDashboard.csproj|d:\\github\\pirack\\pirackdashboard\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -31,6 +43,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\Github\\PiRack\\PiRackDashboard\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Github\\PiRack\\PiRackDashboard\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-09-22T18:24:47.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TelemetryService.cs",
+              "DocumentMoniker": "D:\\Github\\PiRack\\PiRackDashboard\\Services\\TelemetryService.cs",
+              "RelativeDocumentMoniker": "Services\\TelemetryService.cs",
+              "ToolTip": "D:\\Github\\PiRack\\PiRackDashboard\\Services\\TelemetryService.cs",
+              "RelativeToolTip": "Services\\TelemetryService.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAAwGIAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-22T18:21:35.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RackTelemetry.cs",
+              "DocumentMoniker": "D:\\Github\\PiRack\\PiRackDashboard\\Models\\RackTelemetry.cs",
+              "RelativeDocumentMoniker": "Models\\RackTelemetry.cs",
+              "ToolTip": "D:\\Github\\PiRack\\PiRackDashboard\\Models\\RackTelemetry.cs",
+              "RelativeToolTip": "Models\\RackTelemetry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-22T18:21:15.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "dashboard.js",
               "DocumentMoniker": "D:\\Github\\PiRack\\PiRackDashboard\\wwwroot\\js\\dashboard.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\dashboard.js",
@@ -43,20 +94,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Github\\PiRack\\PiRackDashboard\\Pages\\Index.cshtml",
               "RelativeDocumentMoniker": "Pages\\Index.cshtml",
               "ToolTip": "D:\\Github\\PiRack\\PiRackDashboard\\Pages\\Index.cshtml",
               "RelativeToolTip": "Pages\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-09-22T18:03:50.38Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Github\\PiRack\\PiRackDashboard\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -64,12 +115,11 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-22T17:34:38.329Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-22T17:34:38.329Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "PiRackDashboard.csproj",
               "DocumentMoniker": "D:\\Github\\PiRack\\PiRackDashboard\\PiRackDashboard.csproj",
               "RelativeDocumentMoniker": "PiRackDashboard.csproj",

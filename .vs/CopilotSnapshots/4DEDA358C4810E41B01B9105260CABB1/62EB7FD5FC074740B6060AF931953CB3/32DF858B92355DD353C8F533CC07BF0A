@@ -1,5 +1,5 @@
-let tempChart, fanChart, hours=24;
-const tempFields=[['rackTop','Rack Top'],['rackBottom','Rack Bottom'],['ux7Cpu','UX7 CPU'],['ux7Board','UX7 Board'],['unvrCpu','UNVR CPU'],['unvrBoard','UNVR Board']];
+﻿let tempChart, fanChart, hours=24;
+const tempFields=[['rackTop','Rack Top'],['rackBottom','Rack Bottom'],['ux7Cpu','UX7 CPU'],['unvrCpu','UNVR CPU'],['unvrBoard','UNVR Board']];
 const fanFields=[['Ft','FT'],['Fb','FB'],['Fl','FL'],['Fr','FR'],['E1','E1'],['E4','E4']];
 const fmt=v=>v==null?'—':Number(v).toFixed(1)+'°C';
 

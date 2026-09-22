@@ -33,3 +33,5 @@ D:\Github\PiRack\PiRackDashboard\obj\Debug\net8.0\PiRackDashboard.pdb
 D:\Github\PiRack\PiRackDashboard\obj\Debug\net8.0\PiRackDashboard.genruntimeconfig.cache
 D:\Github\PiRack\PiRackDashboard\obj\Debug\net8.0\ref\PiRackDashboard.dll
 D:\Github\PiRack\PiRackDashboard\bin\Debug\net8.0\dotnet-tools.json
+d:\Github\PiRack\PiRackDashboard\obj\Debug\net8.0\PiRackDashboard.sourcelink.json
+d:\Github\PiRack\PiRackDashboard\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

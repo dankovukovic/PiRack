@@ -1,0 +1,132 @@
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.Model;
+using PiRackDashboard.Models;
+using System.Globalization;
+
+namespace PiRackDashboard.Services;
+
+public sealed class TelemetryService
+{
+    private readonly IAmazonDynamoDB _ddb;
+    private readonly string _table;
+    private readonly string _device;
+
+    public TelemetryService(IAmazonDynamoDB ddb, IConfiguration config)
+    {
+        _ddb = ddb;
+        _table = config["Telemetry:TableName"] ?? "RackTelemetry";
+        _device = config["Telemetry:Device"] ?? "rack01";
+    }
+
+    public async Task<RackTelemetry?> GetLatestAsync(CancellationToken ct)
+    {
+        var response = await _ddb.QueryAsync(new QueryRequest
+        {
+            TableName = _table,
+            KeyConditionExpression = "#d = :device",
+            ExpressionAttributeNames = new() { ["#d"] = "device" },
+            ExpressionAttributeValues = new()
+            {
+                [":device"] = new AttributeValue { S = _device }
+            },
+            ScanIndexForward = false,
+            Limit = 1
+        }, ct);
+
+        return response.Items.Count == 0 ? null : Map(response.Items[0]);
+    }
+
+    public async Task<List<RackTelemetry>> GetHistoryAsync(
+        int hours, CancellationToken ct)
+    {
+        long from = DateTimeOffset.UtcNow
+            .AddHours(-hours).ToUnixTimeSeconds();
+
+        var request = new QueryRequest
+        {
+            TableName = _table,
+            KeyConditionExpression = "#d = :device AND #t >= :from",
+            ExpressionAttributeNames = new()
+            {
+                ["#d"] = "device",
+                ["#t"] = "timestamp"
+            },
+            ExpressionAttributeValues = new()
+            {
+                [":device"] = new AttributeValue { S = _device },
+                [":from"] = new AttributeValue
+                {
+                    N = from.ToString(CultureInfo.InvariantCulture)
+                }
+            },
+            ScanIndexForward = true
+        };
+
+        var all = new List<RackTelemetry>();
+
+        do
+        {
+            var response = await _ddb.QueryAsync(request, ct);
+            all.AddRange(response.Items.Select(Map));
+            request.ExclusiveStartKey = response.LastEvaluatedKey;
+        }
+        while (request.ExclusiveStartKey?.Count > 0);
+
+        int target = hours <= 6 ? 360 :
+                     hours <= 24 ? 288 :
+                     hours <= 168 ? 336 : 360;
+
+        if (all.Count <= target)
+            return all;
+
+        double step = (double)(all.Count - 1) / (target - 1);
+
+        return Enumerable.Range(0, target)
+            .Select(i => all[(int)Math.Round(i * step)])
+            .DistinctBy(x => x.Timestamp)
+            .ToList();
+    }
+
+    private static RackTelemetry Map(
+        Dictionary<string, AttributeValue> x) => new()
+    {
+        Device = S(x, "device") ?? "",
+        Timestamp = L(x, "timestamp") ?? 0,
+
+        RackTop = D(x, "rack_top"),
+        RackBottom = D(x, "rack_bottom"),
+        Ux7Cpu = D(x, "ux7_cpu"),
+        UnvrCpu = D(x, "unvr_cpu"),
+        UnvrBoard = D(x, "unvr_board"),
+
+        FanFtPct = D(x, "fan_ft_pct") ?? D(x, "fan_ft"),
+        FanFtRpm = D(x, "fan_ft_rpm"),
+        FanFbPct = D(x, "fan_fb_pct") ?? D(x, "fan_fb"),
+        FanFbRpm = D(x, "fan_fb_rpm"),
+        FanFlPct = D(x, "fan_fl_pct") ?? D(x, "fan_fl"),
+        FanFlRpm = D(x, "fan_fl_rpm"),
+        FanFrPct = D(x, "fan_fr_pct") ?? D(x, "fan_fr"),
+        FanFrRpm = D(x, "fan_fr_rpm"),
+        FanE1Pct = D(x, "fan_e1_pct") ?? D(x, "fan_e1"),
+        FanE1Rpm = D(x, "fan_e1_rpm"),
+        FanE4Pct = D(x, "fan_e4_pct") ?? D(x, "fan_e4"),
+        FanE4Rpm = D(x, "fan_e4_rpm"),
+
+        Status = S(x, "status") ?? "UNKNOWN"
+    };
+
+    private static string? S(
+        Dictionary<string, AttributeValue> x, string key) =>
+        x.TryGetValue(key, out var v) ? v.S : null;
+
+    private static double? D(
+        Dictionary<string, AttributeValue> x, string key) =>
+        x.TryGetValue(key, out var v) &&
+        double.TryParse(v.N, NumberStyles.Any,
+            CultureInfo.InvariantCulture, out var n) ? n : null;
+
+    private static long? L(
+        Dictionary<string, AttributeValue> x, string key) =>
+        x.TryGetValue(key, out var v) &&
+        long.TryParse(v.N, out var n) ? n : null;
+}

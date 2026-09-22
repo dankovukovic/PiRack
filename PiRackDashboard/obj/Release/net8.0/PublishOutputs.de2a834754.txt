@@ -1,0 +1,9 @@
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\PiRackDashboard.exe
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\appsettings.json
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\dotnet-tools.json
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\PiRackDashboard.dll
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\PiRackDashboard.deps.json
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\PiRackDashboard.runtimeconfig.json
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\PiRackDashboard.pdb
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\AWSSDK.Core.dll
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\AWSSDK.DynamoDBv2.dll

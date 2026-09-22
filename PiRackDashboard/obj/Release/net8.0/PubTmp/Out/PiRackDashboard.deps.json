@@ -1,0 +1,59 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "PiRackDashboard/1.0.0": {
+        "dependencies": {
+          "AWSSDK.DynamoDBv2": "3.7.513.4"
+        },
+        "runtime": {
+          "PiRackDashboard.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.501.1": {
+        "runtime": {
+          "lib/net8.0/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.501.1"
+          }
+        }
+      },
+      "AWSSDK.DynamoDBv2/3.7.513.4": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.501.1"
+        },
+        "runtime": {
+          "lib/net8.0/AWSSDK.DynamoDBv2.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.513.4"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PiRackDashboard/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AWSSDK.Core/3.7.501.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VZR0LRAawpn5FQwXNPzhOO8DHhfffhBSvcSZT1d0ctcZ+kmsz3tzTArZnTQ9Haf/TNEqNLzKupHfjV2ndWAL4A==",
+      "path": "awssdk.core/3.7.501.1",
+      "hashPath": "awssdk.core.3.7.501.1.nupkg.sha512"
+    },
+    "AWSSDK.DynamoDBv2/3.7.513.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0um5M1tUa2xjY6Giu1OjWLekNvJc1+MEhfHPBsLf807lASnGIXgxiQevIlRgolstL2oQyJxb3a8RibAkAz/yoQ==",
+      "path": "awssdk.dynamodbv2/3.7.513.4",
+      "hashPath": "awssdk.dynamodbv2.3.7.513.4.nupkg.sha512"
+    }
+  }
+}

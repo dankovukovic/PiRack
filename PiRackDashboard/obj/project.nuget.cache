@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "XuAtUP0Xk/4=",
+  "success": true,
+  "projectFilePath": "D:\\Github\\PiRack\\PiRackDashboard\\PiRackDashboard.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Danko\\.nuget\\packages\\awssdk.core\\3.7.501.1\\awssdk.core.3.7.501.1.nupkg.sha512",
+    "C:\\Users\\Danko\\.nuget\\packages\\awssdk.dynamodbv2\\3.7.513.4\\awssdk.dynamodbv2.3.7.513.4.nupkg.sha512"
+  ],
+  "logs": []
+}

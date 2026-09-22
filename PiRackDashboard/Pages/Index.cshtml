@@ -1,0 +1,38 @@
+@page
+<div class="wrap">
+<header>
+    <div>
+        <h1>PiRack Monitor</h1>
+        <p id="lastUpdate">Loading telemetry…</p>
+    </div>
+    <span id="status" class="status">—</span>
+</header>
+
+<section class="cards">
+    <div class="card"><label>Rack Top</label><strong id="rackTop">—</strong></div>
+    <div class="card"><label>Rack Bottom</label><strong id="rackBottom">—</strong></div>
+    <div class="card"><label>UX7 CPU</label><strong id="ux7Cpu">—</strong></div>
+    <div class="card"><label>UNVR CPU</label><strong id="unvrCpu">—</strong></div>
+    <div class="card"><label>UNVR Board</label><strong id="unvrBoard">—</strong></div>
+</section>
+
+<section class="panel">
+    <div class="panelhead">
+        <h2>Temperature history</h2>
+        <div class="ranges">
+            <button data-hours="1">1H</button>
+            <button data-hours="6">6H</button>
+            <button class="active" data-hours="24">24H</button>
+            <button data-hours="168">7D</button>
+            <button data-hours="720">30D</button>
+        </div>
+    </div>
+    <div class="chart"><canvas id="tempChart"></canvas></div>
+</section>
+
+<section class="panel">
+    <h2>Fans</h2>
+    <div id="fans" class="fans"></div>
+    <div class="chart"><canvas id="fanChart"></canvas></div>
+</section>
+</div>

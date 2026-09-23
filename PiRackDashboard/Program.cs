@@ -5,13 +5,22 @@ using PiRackDashboard.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
-var region = RegionEndpoint.GetBySystemName(
-    builder.Configuration["AWS:Region"] ?? "eu-west-2");
+var useMockTelemetry = builder.Environment.IsDevelopment() &&
+    builder.Configuration.GetValue("Telemetry:UseMockData", false);
 
-builder.Services.AddSingleton<IAmazonDynamoDB>(
-    _ => new AmazonDynamoDBClient(region));
+if (useMockTelemetry)
+{
+    builder.Services.AddSingleton<ITelemetryService, MockTelemetryService>();
+}
+else
+{
+    var region = RegionEndpoint.GetBySystemName(
+        builder.Configuration["AWS:Region"] ?? "eu-west-2");
 
-builder.Services.AddSingleton<TelemetryService>();
+    builder.Services.AddSingleton<IAmazonDynamoDB>(
+        _ => new AmazonDynamoDBClient(region));
+    builder.Services.AddSingleton<ITelemetryService, TelemetryService>();
+}
 
 var app = builder.Build();
 
@@ -23,11 +32,11 @@ app.UseRouting();
 app.MapRazorPages();
 
 app.MapGet("/api/telemetry/latest",
-    async (TelemetryService service, CancellationToken ct) =>
+    async (ITelemetryService service, CancellationToken ct) =>
         Results.Ok(await service.GetLatestAsync(ct)));
 
 app.MapGet("/api/telemetry/history",
-    async (int? hours, TelemetryService service, CancellationToken ct) =>
+    async (int? hours, ITelemetryService service, CancellationToken ct) =>
         Results.Ok(await service.GetHistoryAsync(
             Math.Clamp(hours ?? 24, 1, 24 * 30), ct)));
 

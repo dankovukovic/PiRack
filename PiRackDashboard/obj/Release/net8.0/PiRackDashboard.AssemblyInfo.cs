@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PiRackDashboard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7805b70015781a1eae4fdd56ba4f9256167440ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e182f49c494cafdfbd4dae8d55ec05c268f9edd")]
 [assembly: System.Reflection.AssemblyProductAttribute("PiRackDashboard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PiRackDashboard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

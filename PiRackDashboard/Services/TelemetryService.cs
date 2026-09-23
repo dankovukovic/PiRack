@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace PiRackDashboard.Services;
 
-public sealed class TelemetryService
+public sealed class TelemetryService : ITelemetryService
 {
     private readonly IAmazonDynamoDB _ddb;
     private readonly string _table;

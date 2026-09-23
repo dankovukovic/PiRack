@@ -1,0 +1,14 @@
+﻿:root{color-scheme:dark;font-family:Inter,Segoe UI,Arial,sans-serif;background:#0b0e12;color:#eef3f8}
+*{box-sizing:border-box} body{margin:0;background:#0b0e12}.wrap{max-width:1450px;margin:auto;padding:28px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+h1{font-size:30px;margin:0} header p{margin:7px 0;color:#8995a3}
+.status{padding:10px 18px;border:1px solid #39424d;border-radius:20px;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.card,.panel{background:#12171d;border:1px solid #252d36;border-radius:13px}
+.card{padding:14px}.card label{display:block;color:#8e9aa8;font-size:12px;margin-bottom:7px}.card strong{font-size:24px}
+.panel{padding:20px;margin-top:16px}.panelhead{display:flex;justify-content:space-between;align-items:center}
+h2{font-size:17px;margin:0 0 16px}.ranges button{background:#171d24;color:#9ca8b5;border:1px solid #303944;padding:7px 11px;margin-left:4px;border-radius:6px;cursor:pointer}
+.ranges button.active{background:#e9eef4;color:#111820}.chart{height:310px}
+.fans{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:18px}
+.fan{background:#0d1116;border:1px solid #242c35;padding:13px;border-radius:9px}.fan b{display:block;font-size:19px;margin-top:5px}.fan span{color:#83909d;font-size:12px}
+@media(max-width:850px){.cards{grid-template-columns:repeat(2,1fr)}.fans{grid-template-columns:repeat(2,1fr)}.panelhead{display:block}.ranges{margin-bottom:15px}.wrap{padding:14px}}

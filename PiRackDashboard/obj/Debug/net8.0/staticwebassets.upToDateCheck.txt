@@ -1,2 +1,3 @@
 wwwroot\js\dashboard.js
 wwwroot\css\site.css
+wwwroot\favicon.png

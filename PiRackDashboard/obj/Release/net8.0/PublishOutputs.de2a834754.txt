@@ -1,4 +1,5 @@
 D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\PiRackDashboard.exe
+D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\appsettings.json
 D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\dotnet-tools.json
 D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PubTmp\Out\PiRackDashboard.dll

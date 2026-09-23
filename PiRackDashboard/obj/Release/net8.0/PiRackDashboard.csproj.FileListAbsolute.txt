@@ -35,3 +35,4 @@ D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PiRackDashboard.pdb
 D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PiRackDashboard.genruntimeconfig.cache
 D:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\ref\PiRackDashboard.dll
 d:\Github\PiRack\PiRackDashboard\obj\Release\net8.0\PiRackDashboard.sourcelink.json
+d:\Github\PiRack\PiRackDashboard\bin\Release\net8.0\appsettings.Development.json

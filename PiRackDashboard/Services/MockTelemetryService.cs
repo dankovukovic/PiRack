@@ -33,6 +33,7 @@ public sealed class MockTelemetryService : ITelemetryService
         var rackBottom = 30 + (Math.Sin(periodA - 0.6) * 3.2);
         var ux7Cpu = 53 + (Math.Sin(periodB) * 7.2);
         var ux7Board = 43 + (Math.Cos(periodA + 0.8) * 3.1);
+        var uswPro8 = 39 + (Math.Sin(periodA + 0.2) * 2.6);
         var unvrCpu = 51 + (Math.Sin(periodB - 0.4) * 6.4);
         var unvrBoard = 40 + (Math.Cos(periodA - 0.3) * 2.8);
 
@@ -51,6 +52,7 @@ public sealed class MockTelemetryService : ITelemetryService
             RackBottom = Round1(rackBottom),
             Ux7Cpu = Round1(ux7Cpu),
             Ux7Board = Round1(ux7Board),
+            Uswpro8TempMax = Round1(uswPro8),
             UnvrCpu = Round1(unvrCpu),
             UnvrBoard = Round1(unvrBoard),
             FanFtPct = Round1(Clamp(fanFtPct, 20, 90)),

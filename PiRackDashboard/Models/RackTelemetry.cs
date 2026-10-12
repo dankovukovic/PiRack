@@ -9,6 +9,7 @@ public sealed class RackTelemetry
     public double? RackBottom { get; set; }
     public double? Ux7Cpu { get; set; }
     public double? Ux7Board { get; set; }
+    public double? Uswpro8TempMax { get; set; }
     public double? UnvrCpu { get; set; }
     public double? UnvrBoard { get; set; }
     public double? FanFtPct { get; set; }

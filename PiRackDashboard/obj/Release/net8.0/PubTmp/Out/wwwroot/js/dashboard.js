@@ -1,5 +1,5 @@
 let tempChart, fanChart, hours=24;
-const tempFields=[['rackTop','Rack Top'],['rackBottom','Rack Bottom'],['ux7Cpu','UX7 CPU'],['ux7Board','UX7 Board'],['unvrCpu','UNVR CPU'],['unvrBoard','UNVR Board']];
+const tempFields=[['rackTop','Rack Top'],['rackBottom','Rack Bottom'],['ux7Cpu','UX7 CPU'],['ux7Board','UX7 Board'],['uswpro8TempMax','USW Pro8'],['unvrCpu','UNVR CPU'],['unvrBoard','UNVR Board']];
 const fanFields=[['Ft','FT'],['Fb','FB'],['Fl','FL'],['Fr','FR'],['E1','E1'],['E4','E4']];
 const fmt=v=>v==null?'—':Number(v).toFixed(1)+'°C';
 const minGapThresholdMs=2*60*1000;
@@ -53,6 +53,8 @@ async function history(){
     const d=await r.json();
     const gapThresholdMs=detectGapThresholdMs(d);
     const xTickLimit=hours<=6?12:hours<=24?10:8;
+    const xMin=d.length>0?d[0].timestamp*1000:Date.now()-(hours*3600*1000);
+    const xMax=d.length>0?d[d.length-1].timestamp*1000:Date.now();
     const common={
       responsive:true,
       maintainAspectRatio:false,
@@ -71,6 +73,9 @@ async function history(){
       scales:{
         x:{
           type:'linear',
+          bounds:'data',
+          min:xMin,
+          max:xMax,
           ticks:{
             autoSkip:true,
             maxTicksLimit:xTickLimit,

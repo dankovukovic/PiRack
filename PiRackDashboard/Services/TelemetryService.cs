@@ -97,6 +97,7 @@ public sealed class TelemetryService : ITelemetryService
         RackBottom = D(x, "rack_bottom"),
         Ux7Cpu = D(x, "ux7_cpu"),
         Ux7Board = D(x, "ux7_board"),
+        Uswpro8TempMax = D(x, "uswpro8_TempMax"),
         UnvrCpu = D(x, "unvr_cpu"),
         UnvrBoard = D(x, "unvr_board"),
 

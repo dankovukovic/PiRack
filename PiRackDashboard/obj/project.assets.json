@@ -102,23 +102,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Danko\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Danko Vukovic\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\PiRack\\PiRackDashboard\\PiRackDashboard.csproj",
+      "projectUniqueName": "D:\\GitHub\\PiRack\\PiRackDashboard\\PiRackDashboard.csproj",
       "projectName": "PiRackDashboard",
-      "projectPath": "D:\\Github\\PiRack\\PiRackDashboard\\PiRackDashboard.csproj",
-      "packagesPath": "C:\\Users\\Danko\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\PiRack\\PiRackDashboard\\obj\\",
+      "projectPath": "D:\\GitHub\\PiRack\\PiRackDashboard\\PiRackDashboard.csproj",
+      "packagesPath": "C:\\Users\\Danko Vukovic\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\PiRack\\PiRackDashboard\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Danko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Danko Vukovic\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

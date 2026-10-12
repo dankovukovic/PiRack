@@ -2,6 +2,27 @@ let tempChart, fanChart, hours=24;
 const tempFields=[['rackTop','Rack Top'],['rackBottom','Rack Bottom'],['ux7Cpu','UX7 CPU'],['ux7Board','UX7 Board'],['unvrCpu','UNVR CPU'],['unvrBoard','UNVR Board']];
 const fanFields=[['Ft','FT'],['Fb','FB'],['Fl','FL'],['Fr','FR'],['E1','E1'],['E4','E4']];
 const fmt=v=>v==null?'—':Number(v).toFixed(1)+'°C';
+const minGapThresholdMs=2*60*1000;
+
+function formatXAxis(tsMs){
+    const dt=new Date(tsMs);
+    return hours<=24
+      ? dt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',hour12:false})
+      : dt.toLocaleDateString([], {month:'short',day:'numeric'})+' '+dt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',hour12:false});
+}
+
+function detectGapThresholdMs(rows){
+    if(!rows||rows.length<3) return minGapThresholdMs;
+    const deltas=[];
+    for(let i=1;i<rows.length;i++){
+      const delta=(rows[i].timestamp-rows[i-1].timestamp)*1000;
+      if(delta>0) deltas.push(delta);
+    }
+    if(deltas.length===0) return minGapThresholdMs;
+    deltas.sort((a,b)=>a-b);
+    const median=deltas[Math.floor(deltas.length/2)];
+    return Math.max(minGapThresholdMs, median*2.5);
+}
 
 function normalizeStatus(rawStatus, timestamp){
     const ageSeconds=Math.floor(Date.now()/1000)-Number(timestamp||0);
@@ -30,12 +51,8 @@ async function latest(){
 async function history(){
     const r=await fetch('/api/telemetry/history?hours='+hours);
     const d=await r.json();
-    const labels=d.map(x=>{
-      const dt=new Date(x.timestamp*1000);
-      return hours<=24
-        ? dt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',hour12:false})
-        : dt.toLocaleDateString([], {month:'short',day:'numeric'});
-    });
+    const gapThresholdMs=detectGapThresholdMs(d);
+    const xTickLimit=hours<=6?12:hours<=24?10:8;
     const common={
       responsive:true,
       maintainAspectRatio:false,
@@ -45,28 +62,55 @@ async function history(){
         legend:{position:'bottom'},
         tooltip:{
           callbacks:{
-            title:items=>{
-              const i=items?.[0]?.dataIndex;
-              if(i==null)return '';
-              return new Date(d[i].timestamp*1000).toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});
-            }
+            title:items=>items?.[0]?.parsed?.x
+              ? new Date(items[0].parsed.x).toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false})
+              : ''
           }
         }
       },
       scales:{
-        x:{ticks:{autoSkip:true,maxTicksLimit:hours<=6?12:hours<=24?10:8,maxRotation:0,minRotation:0}}
+        x:{
+          type:'linear',
+          ticks:{
+            autoSkip:true,
+            maxTicksLimit:xTickLimit,
+            maxRotation:0,
+            minRotation:0,
+            callback:value=>formatXAxis(Number(value))
+          }
+        }
       }
     };
     if(tempChart)tempChart.destroy();   
     tempChart=new Chart(document.getElementById('tempChart'),{
       type:'line',
-      data:{labels,datasets:tempFields.map(([k,n])=>({label:n,data:d.map(x=>x[k]),pointRadius:0,borderWidth:2,tension:.15}))},
+      data:{datasets:tempFields.map(([k,n])=>({
+        label:n,
+        data:d.map(x=>({x:x.timestamp*1000,y:x[k]})),
+        pointRadius:0,
+        borderWidth:2,
+        tension:.15,
+        segment:{
+          borderColor:ctx=>(ctx.p1.parsed.x-ctx.p0.parsed.x)>gapThresholdMs?'#8f98a3':undefined,
+          borderDash:ctx=>(ctx.p1.parsed.x-ctx.p0.parsed.x)>gapThresholdMs?[6,6]:undefined
+        }
+      }))},
       options:{...common,scales:{...common.scales,y:{suggestedMin:20,suggestedMax:100,title:{display:true,text:'°C'}}}}
     });
     if(fanChart)fanChart.destroy();
     fanChart=new Chart(document.getElementById('fanChart'),{
       type:'line',
-      data:{labels,datasets:fanFields.slice(0,4).map(([k,n])=>({label:n+' %',data:d.map(x=>x['fan'+k+'Pct']),pointRadius:0,borderWidth:2,tension:.15}))},
+      data:{datasets:fanFields.slice(0,4).map(([k,n])=>({
+        label:n+' %',
+        data:d.map(x=>({x:x.timestamp*1000,y:x['fan'+k+'Pct']})),
+        pointRadius:0,
+        borderWidth:2,
+        tension:.15,
+        segment:{
+          borderColor:ctx=>(ctx.p1.parsed.x-ctx.p0.parsed.x)>gapThresholdMs?'#8f98a3':undefined,
+          borderDash:ctx=>(ctx.p1.parsed.x-ctx.p0.parsed.x)>gapThresholdMs?[6,6]:undefined
+        }
+      }))},
       options:{...common,scales:{...common.scales,y:{min:0,max:100,title:{display:true,text:'Fan %'}}}}
     });
 }
